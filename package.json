@@ -1,0 +1,25 @@
+{
+  "name": "WorkshopWeb",
+  "version": "1.0.0",
+  "main": "indes.js",
+  "type": "module",
+  "repository": "https://github.com/macostacurta/WorkshopWeb",
+  "author": "macostacurta <101334491+macostacurta@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "yarn build",
+    "dev:server": "yarn ts-node-dev --respawn --ignore-watch node_modules src/server.ts",
+    "typeorm": "yarn ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.10",
+    "ts-node-dev": "^1.1.8"
+  }
+}
