@@ -1,18 +1,25 @@
 {
   "name": "WorkshopWeb",
   "version": "1.0.0",
-  "main": "indes.js",
+  "main": "server.js",
   "repository": "https://github.com/macostacurta/WorkshopWeb",
-  "author": "macostacurta <101334491+macostacurta@users.noreply.github.com>",
+  "author": "Marco Costacurta <mamcostacurta@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "yarn ts-node-dev ./src/server.ts",
+    "build": "yarn tsc",
     "postinstall": "yarn build",
-    "dev:server": "yarn ts-node-dev --respawn --ignore-watch node_modules src/server.ts",
-    "typeorm": "yarn ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:create": "typeorm migration:create ./db/migration/Create_User_Table",
+    "migration:run": "yarn typeorm -- migration:run -d ./db/data-source.ts",
+    "entity:create": "yarn typeorm entity:create ./db/entity/User"
   },
   "dependencies": {
+    "dotenv": "16.4.5",
     "express": "4.19.2",
-    "sqlite3": "5.1.7",
+    "pg": "8.11.5",
+    "reflect-metadata": "0.2.2",
+    "ts-node": "10.9.2",
     "ts-node-dev": "2.0.0",
     "typeorm": "0.3.20",
     "typescript": "5.4.5"

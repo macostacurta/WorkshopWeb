@@ -1,10 +1,14 @@
 import { Router } from 'express';
-
-
-const user_domain = () => {}
+import { AuthController } from './Domains/Auth';
+import { usersRoutes } from './Domains/Users';
 
 const router = Router()
 
-router.get("/user", user_domain)
-router.get("/auth", user_domain)
-router.get("/auth", user_domain)
+const authController = new AuthController()
+
+router.post("/auth", authController.handle)
+
+router.use("/users", usersRoutes)
+
+export default router
+
