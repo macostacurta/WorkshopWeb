@@ -8,8 +8,12 @@ interface ILoginParams {
 export class AuthService {
   async login({ email, password }: ILoginParams): Promise<boolean> {
     const userRepository = new UserRepository()
-    const users = await userRepository.getUsers()
+    const userFound = await userRepository.getUserByEmail(email)
 
+    if (!userFound) throw new Error("No user was found")
+
+
+      
     const user = users.find(user => {
       if (user.email == email
         // && user.password == password
